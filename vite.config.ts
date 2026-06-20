@@ -6,4 +6,13 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-export default defineConfig();
+export default defineConfig({
+  // Disable Cloudflare/Nitro Workers adapter — building for Vercel (static SPA)
+  nitro: false,
+  tanstackStart: {
+    spa: {
+      enabled: true,
+      prerender: { outputPath: "/index" },
+    },
+  },
+});
